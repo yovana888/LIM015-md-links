@@ -1,10 +1,12 @@
-const mdLinks = require('../');
+const methods = require('../src/index.js');
 
+describe('prueba', () => {
+    it('verificar si prueba es una funcion', () => {
+        expect(typeof methods.prueba).toBe('function');
+    });
 
-describe('mdLinks', () => {
-
-  it('should...', () => {
-    console.log('FIX ME!');
-  });
+    it("Debería retornar `Hola Mundo`", () => {
+        expect(methods.prueba()).toBe('Hola Mundo');
+    });
 
 });
