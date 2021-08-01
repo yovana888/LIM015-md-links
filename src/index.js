@@ -1,10 +1,15 @@
-const { getAbsolutePath, validateIfPathExists, isDirectory } = require('./functions.js');
+const { getAbsolutePath, validateIfPathExists, isDirectory, getFilesMd } = require('./functions.js');
 
 const mdLinks = (route, option = { validate: false }) => new Promise((resolve, reject) => {
     const absolutePath = getAbsolutePath(route)
     if (validateIfPathExists(absolutePath) === true) {
         if (isDirectory(absolutePath) === true) {
-            const getFilesMd = readDirectory(absolutePath);
+            const allFilesMd = getFilesMd(absolutePath); //extrae todos los md :v
+            if (allFilesMd.length != 0) {
+                resolve(allFilesMd);
+            } else {
+                reject('Error [X]: No se Encontraron Archivos con extension .md');
+            }
         } else {
             resolve('archivo')
         }
@@ -16,7 +21,7 @@ const mdLinks = (route, option = { validate: false }) => new Promise((resolve, r
 
 
 
-mdLinks("P:/CDMX010-data-lovers-master/src/main.js", { validate: true })
+mdLinks("P:/CDMX010-data-lovers-master/readmes", { validate: true })
     .then(response => {
         console.log(response)
     })
