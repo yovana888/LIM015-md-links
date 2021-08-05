@@ -1,39 +1,33 @@
-const fs = require("fs");
-const path = require("path");
-const axios = require("axios");
-const filehound = require('filehound');
+const { readDirectory, readFile, fs, path } = require('./utils.js');
 
+const validatePath = (pathInput) => {
+    const pathNormalize = path.normalize(pathInput);; //corregir la barras 
+    const pathAbsolute = path.resolve(pathNormalize); //convierte la ruta a absoluta
+    const resultValidatePath = fs.existsSync(pathAbsolute) ? pathAbsolute : 'error'; //verifica si existe
+    return resultValidatePath;
+};
 
-const getAbsolutePath = (route) => {
-    let absolutePath = path.normalize(route); //corregir la barras 
-    absolutePath = path.resolve(absolutePath); //convierte la ruta a absoluta
-    return absolutePath;
-}
-
-const validateIfPathExists = (route) => fs.existsSync(route);
-
-const isDirectory = (route) => fs.statSync(route).isDirectory(); //devuelve true en caso de ser un directorio 
-
-const getFilesMd = (route) => {
-    var results = [];
-    var files = fs.readdirSync(route); //leer contenido de una carpeta
-
-    for (let key in files) {
-        var filename = path.join(route, files[key]);
-        if (isDirectory(filename) === true) {
-            results = results.concat(getFilesMd(filename)); //recurse
-        } else if (path.extname(filename) === '.md') {
-            results.push(filename);
-        }
+const getMdLinks = (pathValid) => {
+    const allLinks = [];
+    const allFilesMd = (path.extname(pathValid) === '.md') ? [pathValid] : readDirectory(pathValid);
+    for (let key in allFilesMd) {
+        allLinks.push({
+            numFile: parseInt(key) + 1,
+            pathFile: allFilesMd[key],
+            links: readFile(allFilesMd[key])
+        })
     }
-    return results;
+    return allLinks;
 }
 
+const getMdlinksDetailed = (pathValid) => {
+    const allLinks = getMdLinks(pathValid);
+
+}
 
 
 module.exports = {
-    getAbsolutePath,
-    validateIfPathExists,
-    isDirectory,
-    getFilesMd
+    validatePath,
+    getMdlinksDetailed,
+    getMdLinks
 }
