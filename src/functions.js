@@ -1,5 +1,4 @@
-const { readDirectory, readFile, fs, path } = require('./utils.js');
-
+const { readDirectory, readFile, fs, path, validateLinks } = require('./utils.js');
 const validatePath = (pathInput) => {
     const pathNormalize = path.normalize(pathInput);; //corregir la barras 
     const pathAbsolute = path.resolve(pathNormalize); //convierte la ruta a absoluta
@@ -8,23 +7,22 @@ const validatePath = (pathInput) => {
 };
 
 const getMdLinks = (pathValid) => {
-    const allLinks = [];
     const allFilesMd = (path.extname(pathValid) === '.md') ? [pathValid] : readDirectory(pathValid);
-    for (let key in allFilesMd) {
-        allLinks.push({
-            numFile: parseInt(key) + 1,
-            pathFile: allFilesMd[key],
-            links: readFile(allFilesMd[key])
-        })
-    }
-    return allLinks;
+    let allLinksMd = allFilesMd.map((elemento) => {
+        return readFile(elemento)
+    })
+    return allLinksMd.flat(); //se crea un nuevo arreglo con todos los elementos de los subarreglos concatenados a él de forma recursiva
 }
 
 const getMdlinksDetailed = (pathValid) => {
-    const allLinks = getMdLinks(pathValid);
-
+    const arrayLinks = getMdLinks(pathValid);
+    console.log('Procesando...');
+    const respuesta = Promise.all(validateLinks(arrayLinks))
+        .then((res) => {
+            return (res) //creo la promesa
+        })
+    return respuesta;
 }
-
 
 module.exports = {
     validatePath,

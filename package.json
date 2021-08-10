@@ -23,8 +23,8 @@
     },
     "homepage": "https://github.com/yovana888/LIM015-md-links#readme",
     "dependencies": {
-        "axios": "^0.21.1",
         "jest": "^27.0.6",
+        "node-fetch": "^2.6.1",
         "slash": "^4.0.0"
     },
     "devDependencies": {

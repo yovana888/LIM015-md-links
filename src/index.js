@@ -17,11 +17,9 @@ const mdLinks = (path, option = { validate: false }) => new Promise((resolve, re
 });
 
 //P:/CDMX010-data-lovers-master/readmes     P:/SCL017-card-validation-master/README.md   ../README.md
-mdLinks("P:/CDMX010-data-lovers-master/readmes", { validate: false })
+mdLinks("P:/CDMX010-data-lovers-master/readmes", { validate: true })
     .then(response => {
-        response.map((response) => {
-            console.log(response);
-        })
+        console.log(response);
     })
     .catch(error => {
         console.log(error);
