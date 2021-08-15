@@ -9,10 +9,10 @@ const mdLinks = (path, option = { validate: false }) => new Promise((resolve, re
             case false:
                 { resolve(getMdLinks(pathValid)); break; }
             default:
-                { reject('Error [X]: The second argument only allows a named parameter eg: `{validate: true}`, alternatively it can be false or not to place the argument') }
+                { reject('Error [X]: El segundo parametro es valido si es: `{validate: true} o {validate: false}`, alternativamente puede omitirlo') }
         }
     } else {
-        reject('Error [X]: The path entered does not exist')
+        reject('Error [X]: La ruta ingresada no existe')
     }
 });
 

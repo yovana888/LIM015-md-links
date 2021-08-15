@@ -55,7 +55,9 @@ const validateLinks = (data) => data.map((obj) => {
         return {
             file: obj.file,
             href: obj.href,
-            text: obj.text
+            text: obj.text,
+            status: '-',
+            message: '-'
         }
     } else {
         return fetch(obj.href)
