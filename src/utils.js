@@ -19,17 +19,26 @@ const readDirectory = (pathDirectory) => {
     return results;
 }
 
-//leer archivo;
+const regexCorcheteParentesis = /!*\[(.+?)\]\((.+?)\)/gi; // String que cumpla: [2. Resumen del proyecto](#2-resumen-del-proyecto)
+const regexUrl = /(?:(?:https?|ftp|file):\/\/|www\.|ftp\.)(?:\([-A-Z0-9+&@#\/%=~_|$?!:,.]*\)|[-A-Z0-9+&@#\/%=~_|$?!:,.])*(?:\([-A-Z0-9+&@#\/%=~_|$?!:,.]*\)|[A-Z0-9+&@#\/%=~_|$])/ig;
+
+//LEER ARCHIVO;
 const readFile = (pathFile) => {
     const content = fs.readFileSync(pathFile, 'utf8', (err, data) => {
         if (err) { return 'error'; } else { return data; }
     });
-    if (content != 'error') {
-        const resultUrl = content.match(/!*\[(.+?)\]\((.+?)\)/gi); //extrae en formato array todos los regex que cumplan: [2. Resumen del proyecto](#2-resumen-del-proyecto)
-        let allLinksMd = [];
-        for (let key in resultUrl) {
-            let textUrl = resultUrl[key].match(/\[(.*)\]/).pop(); // Solo lo que se encuentre dentro de los corchetes
-            let url = resultUrl[key].match(/(?:(?:https?|ftp|file):\/\/|www\.|ftp\.)(?:\([-A-Z0-9+&@#\/%=~_|$?!:,.]*\)|[-A-Z0-9+&@#\/%=~_|$?!:,.])*(?:\([-A-Z0-9+&@#\/%=~_|$?!:,.]*\)|[A-Z0-9+&@#\/%=~_|$])/ig); // que extraiga solo la url
+
+    const allLinksMd = [];
+
+    if (content == 'error') {
+        const msj1 = 'No se puede leer este archivo :c';
+        allLinksMd.push({ file: pathFile, href: '-', text: msj1 });
+    } else {
+        const resultUrl = content.match(regexCorcheteParentesis); //extrae en formato array
+
+        resultUrl.forEach((item) => {
+            let textUrl = item.match(/\[(.*)\]/).pop(); // Solo lo que se encuentre dentro de el 1er Corchetes
+            let url = item.match(regexUrl); // que extraiga Solo la url
             if (url != null) {
                 allLinksMd.push({
                     file: pathFile,
@@ -37,16 +46,12 @@ const readFile = (pathFile) => {
                     text: textUrl.slice(0, 50)
                 });
             }
+        });
 
-        }
-        const msj = 'No se encontro Links en este archivo';
-        if (allLinksMd.length == 0) { allLinksMd.push({ file: pathFile, href: '-', text: msj }) }
-        return allLinksMd;
-
-    } else {
-        return 'Al paracer Hubo un error al leer este archivo :c';
+        const msj2 = 'No se encontro Links en este archivo';
+        if (allLinksMd.length == 0) { allLinksMd.push({ file: pathFile, href: '-', text: msj2 }) }
     }
-
+    return allLinksMd;
 }
 
 //FUNCIÓN QUE VALIDA SI LOS LINKS ESTÁN 'OK' O 'FAIL'

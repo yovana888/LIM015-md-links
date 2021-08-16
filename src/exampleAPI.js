@@ -1,6 +1,6 @@
 //P:/CDMX010-data-lovers-master/readmes     P:/SCL017-card-validation-master/README.md   ../README.md
 const { mdLinks } = require('./index.js');
-mdLinks("../index.html", { validate: true })
+mdLinks("../README.md", { validate: false })
     .then(response => {
         console.log(response);
     })

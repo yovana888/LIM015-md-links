@@ -1,7 +1,7 @@
 const chalk = require('chalk'); // libreria para colores
 const { mdLinks } = require('./index.js');
 const help = chalk.green(`
-------------- Opciones Validas :D --------------
+------------- Opciones Validas :v --------------
 md-links <path-to-file>
 md-links <path-to-file> --validate --stats
 md-links <path-to-file> --v --s
