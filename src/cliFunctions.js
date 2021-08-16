@@ -45,7 +45,6 @@ const stats = (ObjLinks) => {
 };
 
 const validateAndStats = (ObjLinks) => {
-
     const totalLinks = ObjLinks.length;
     const arrayLinks = ObjLinks.map((link) => link.href);
     const newSet = new Set(arrayLinks);

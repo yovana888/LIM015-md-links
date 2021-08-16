@@ -88,5 +88,6 @@ module.exports = {
     readFile,
     fs,
     path,
+    isDirectory,
     validateLinks
 }
