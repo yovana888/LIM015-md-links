@@ -12,9 +12,9 @@ md-links <path-to-file> --s
 ------------------------------------------------
 `);
 
-const rptaTable = (ObjLinks, printStatus) => {
+const rptaTable = (objLinks, printStatus) => {
     console.log(chalk.green(`\n*********************************************   LINKS ENCONTRADOS  ****************************************\n`));
-    ObjLinks.map((obj) => {
+    objLinks.map((obj) => {
         console.log(chalk.magenta.bold('File: ') + obj.file);
         console.log(chalk.magenta.bold('Url: ') + obj.href);
         console.log(chalk.magenta.bold('Text: ') + obj.text);
@@ -36,23 +36,23 @@ const errorOptions = (msj) => {
     console.log(help);
 }
 
-const stats = (ObjLinks) => {
-    const totalLinks = ObjLinks.length;
-    const arrayLinks = ObjLinks.map((link) => link.href);
+const stats = (objLinks) => {
+    const totalLinks = objLinks.length;
+    const arrayLinks = objLinks.map((link) => link.href);
     const newSet = new Set(arrayLinks);
     const uniqueLinks = [...newSet].length;
     return { Total: totalLinks, Unique: uniqueLinks };
 };
 
-const validateAndStats = (ObjLinks) => {
-    const totalLinks = ObjLinks.length;
-    const arrayLinks = ObjLinks.map((link) => link.href);
+const validateAndStats = (objLinks) => {
+    const totalLinks = objLinks.length;
+    const arrayLinks = objLinks.map((link) => link.href);
     const newSet = new Set(arrayLinks);
     const uniqueLinks = [...newSet].length;
     let brokenLinks = 0;
     let notFound = 0;
 
-    ObjLinks.map((link) => {
+    objLinks.map((link) => {
         if (link.status === 500) brokenLinks++;
         if (link.status === 404) notFound++;
     });
