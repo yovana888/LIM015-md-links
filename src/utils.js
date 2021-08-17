@@ -8,14 +8,14 @@ const readDirectory = (pathDirectory) => {
     let results = []; //almacena todas las rutas del los archivos md
     let files = fs.readdirSync(pathDirectory);
 
-    for (let key in files) {
-        let pathFile = path.join(pathDirectory, files[key]);
+    files.forEach((item) => {
+        let pathFile = path.join(pathDirectory, item);
         if (isDirectory(pathFile)) {
             results = results.concat(readDirectory(pathFile)); //recurse
         } else if (path.extname(pathFile) === '.md') {
             results.push(pathFile);
         }
-    }
+    });
     return results;
 }
 
