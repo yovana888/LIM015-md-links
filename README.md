@@ -15,9 +15,12 @@
 
 Markdown Links es una librería de Node.js que nos permite buscar en un directorio todos los archivos en formato Markdown (.md) y a partir de ello mostrar todos los links como tambien se podra validar el status de cada uno de ellos.
 
-## 2. Diagramas de Flujo :pencil2:
+## 2. Diagramas de Flujo:pencil2:
 
+### Para la Librería
 ![md-links](src/img/md_links.jpg)
+
+### Para el CLI
 ![cli](src/img/cli.jpg)
 
 ## 3. Instalación :rocket:
