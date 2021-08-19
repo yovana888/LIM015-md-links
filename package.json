@@ -1,5 +1,5 @@
 {
-    "name": "mdlinks-yv",
+    "name": "mdlinks-yvc",
     "version": "1.0.0",
     "description": "Este módulo reporta estadísticas de links, si son válidos, únicos o están rotos que se encuentran en archivos Markdown",
     "main": "src/md-links.js",
