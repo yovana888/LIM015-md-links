@@ -1,6 +1,6 @@
 {
-    "name": "mdlinks-yvc",
-    "version": "1.0.1",
+    "name": "mdlinks-yok",
+    "version": "1.0.0",
     "description": "Este módulo reporta estadísticas de links, si son válidos, únicos o están rotos que se encuentran en archivos Markdown",
     "main": "src/md-links.js",
     "directories": {
@@ -10,7 +10,7 @@
         "test": "jest --coverage"
     },
     "bin": {
-        "md-Links": "./src/cli.js"
+        "mdlinks": "./src/cli.js"
     },
     "repository": {
         "type": "git",
