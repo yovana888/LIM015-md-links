@@ -24,34 +24,29 @@ const regexUrl = /(?:(?:https?|ftp|file):\/\/|www\.|ftp\.)(?:\([-A-Z0-9+&@#\/%=~
 
 //LEER ARCHIVO;
 const readFile = (pathFile) => {
-    const content = fs.readFileSync(pathFile, 'utf8', (err, data) => {
-        if (err) { return 'error'; } else { return data; }
-    });
+    const content = fs.readFileSync(pathFile, 'utf8');
 
     const allLinksMd = [];
+    const resultUrl = content.match(regexCorcheteParentesis); //extrae en formato array
 
-    if (content == 'error') {
-        const msj1 = 'No se puede leer este archivo :c';
-        allLinksMd.push({ file: pathFile, href: '-', text: msj1 });
-    } else {
-        const resultUrl = content.match(regexCorcheteParentesis); //extrae en formato array
+    for (let key in resultUrl) {
+        let textUrl = resultUrl[key].match(/\[(.*)\]/).pop(); // Solo lo que se encuentre dentro de los corchetes
+        let url = resultUrl[key].match(regexUrl); // que extraiga solo la url
+        if (url != null) {
+            allLinksMd.push({
+                file: pathFile,
+                href: url[0],
+                text: textUrl.slice(0, 50)
+            });
+        }
 
-        resultUrl.forEach((item) => {
-            let textUrl = item.match(/\[(.*)\]/).pop(); // Solo lo que se encuentre dentro de el 1er Corchetes
-            let url = item.match(regexUrl); // que extraiga Solo la url
-            if (url != null) {
-                allLinksMd.push({
-                    file: pathFile,
-                    href: url[0],
-                    text: textUrl.slice(0, 50)
-                });
-            }
-        });
-
-        const msj2 = 'No se encontro Links en este archivo';
-        if (allLinksMd.length == 0) { allLinksMd.push({ file: pathFile, href: '-', text: msj2 }) }
     }
+
+    const msj2 = 'No se encontro Links en este archivo';
+    if (allLinksMd.length == 0) { allLinksMd.push({ file: pathFile, href: '-', text: msj2 }) }
+
     return allLinksMd;
+
 }
 
 //FUNCIÓN QUE VALIDA SI LOS LINKS ESTÁN 'OK' O 'FAIL'

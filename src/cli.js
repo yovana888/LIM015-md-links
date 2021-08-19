@@ -1,3 +1,5 @@
+#! /usr/bin/env node
+
 const { argvL1, argvL2, argvL3, errorOptions } = require('./cliFunctions.js');
 const [, , ...argv] = process.argv;
 const argvLenght = argv.length;
