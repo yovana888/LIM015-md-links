@@ -69,6 +69,5 @@ La librería contiene las siguientes dependencias:
  - [ ] El ejecutable de nuestra aplicación debe poder ejecutarse de la siguiente manera a través de la terminal:
      - `md-links <path-to-file> [options]`
 
- - [ ] :small_orange_diamond: Option: --help
-
-       ![helpCLI](src/img/clihelp.png)
+    :small_orange_diamond: Option: --help
+    ![helpCLI](src/img/clihelp.png)
