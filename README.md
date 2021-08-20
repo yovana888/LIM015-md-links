@@ -1,24 +1,14 @@
-# Markdown Links
-
-## Índice
-
-* [1. ¿Que es Md-Links?](#1-que-es-md-links)
-* [2. Diagrama de Flujo](#2-diagrama-de-flujo)
-* [3. Instalación](#3-instalación)
-* [4. Herramientas utilizadas de librería](#4-herramientas-utilizadas)
-* [5. Uso de la librería](#5-uso-de-la-librería)
-* [6. Uso del CLI](#6-uso-del-cli)
-
-***
+# Mdlinks-yok
 
 ## 1. ¿Que es Md-Links?
 
-Markdown Links es una librería de Node.js que nos permite buscar en un directorio todos los archivos con extension (.md) y a partir de ello mostrar todos los links por cada archivo, asi mismo se podra validar el status de cada uno de ellos.
+Mdlinks-yok es una librería de Node.js que nos permite buscar en un directorio todos los archivos con extension (.md) y a partir de ello mostrar todos los links por cada archivo, asi mismo se podra validar el status de cada uno de ellos.
 
 ## 2. Diagramas de Flujo:pencil2:
 
-   [Para la Librería](src/img/md_links.jpg)
-   [Para el CLI](src/img/cli.jpg)
+  - [ ] [Para la Librería](src/img/md_links.jpg)
+  
+  - [ ] [Para el CLI](src/img/cli.jpg)
 
 ## 3. Instalación :rocket:
 
