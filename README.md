@@ -7,7 +7,7 @@
 * [3. Instalación](#3-instalación)
 * [4. Herramientas utilizadas de librería](#4-herramientas-utilizadas)
 * [5. Uso de la librería](#5-uso-de-la-librería)
-* [6. Ejemplos de funcionalidad de la librería](#5-ejemplos-de-funcionalidad-de-la-librería)
+* [6. Uso del CLI](#6-uso-del-cli)
 
 ***
 
@@ -17,11 +17,8 @@ Markdown Links es una librería de Node.js que nos permite buscar en un director
 
 ## 2. Diagramas de Flujo:pencil2:
 
-   ### Para la Librería
-   [Para la Librería: md-links](src/img/md_links.jpg)
-
-   ### Para el CLI
-   [Para el cli](src/img/cli.jpg)
+   [Para la Librería](src/img/md_links.jpg)
+   [Para el CLI](src/img/cli.jpg)
 
 ## 3. Instalación :rocket:
 
@@ -71,5 +68,19 @@ La librería contiene las siguientes dependencias:
   ![helpCLI](src/img/clihelp.png)
     
 
-  :white_check_mark:  Option: **mdlinks <path-to-file>**
-    ![helpCLI](src/img/clipath.png)
+  :white_check_mark:  Option: `mdlinks <path-to-file>`
+    
+   ![helpCLI](src/img/clipath.png)
+
+   :white_check_mark:  Option: `mdlinks <path-to-file> --validate` o `mdlinks <path-to-file> --v`
+    
+   ![helpCLI](src/img/cli-v.png)
+
+   :white_check_mark:  Option: `mdlinks <path-to-file> --stats` o `mdlinks <path-to-file> --s`
+    
+   ![helpCLI](src/img/cli-s.png)
+
+   :white_check_mark:  Option: `mdlinks <path-to-file> --validate --stats` o `mdlinks <path-to-file> --v --s`
+    
+   ![helpCLI](src/img/cli-v-s.png)
+
