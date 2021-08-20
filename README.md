@@ -26,14 +26,11 @@ Markdown Links es una librería de Node.js que nos permite buscar en un director
 
 ## 3. Instalación :rocket:
 
-- [ ] Para instalar la librería a modo global debe ejecutar el siguiente comando:
-      #### `npm install -g mdlinks-yok`
+- [ ] Para instalar la librería a modo global debe ejecutar el siguiente comando: `npm install -g mdlinks-yok`
 
-- [ ] Alternativamente para instalar el paquete con fines de desarrollo:
-      #### `npm install --save-dev  mdlinks-yok`
+- [ ] Alternativamente para instalar el paquete con fines de desarrollo: `npm install --save-dev  mdlinks-yok`
 
-- [ ] Para Corroborar es la libreria es parte de nuestras dependencias ejecutar:
-      #### `npm list --depth 0`
+- [ ] Para Corroborar que la libreria es parte de nuestras dependencias ejecutar: `npm list --depth 0`
 
 ## 4. Herramientas Utilizadas 	:black_nib:
 
@@ -61,10 +58,12 @@ La librería contiene las siguientes dependencias:
     - option: Un objeto con la propiedad validate, donde puede ser true o false 
 
 - [ ] Para poder visualizar el resultado ejecute desde su terminal `node <ejemploArchivo.js>` 
-      * validate:false
+    - validate:false
+    
       ![resultApiFalse](src/img/resultApiFalse.png)
 
-      *validate:true
+    - validate:true
+
       ![resultApiTrue](src/img/resultApiTrue.png)
 
 ## 6. Uso del CLI :package:
