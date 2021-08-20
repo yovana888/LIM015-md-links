@@ -69,5 +69,8 @@ La librería contiene las siguientes dependencias:
   El ejecutable de nuestra aplicación debe poder ejecutarse de la siguiente manera a través de la terminal:
     `md-links <path-to-file> [options]`
 
-  :white_check_mark:  Option: --help
+  :white_check_mark:  Option: `mdlinks --help`
     ![helpCLI](src/img/clihelp.png)
+  
+  :white_check_mark:  Option: `mdlinks <path-to-file>`
+    ![helpCLI](src/img/clipath.png)
