@@ -18,11 +18,10 @@ Markdown Links es una librería de Node.js que nos permite buscar en un director
 ## 2. Diagramas de Flujo:pencil2:
 
    ### Para la Librería
-   ![md-links](src/img/md_links.jpg)
-
+   [Para la Librería: md-links](src/img/md_links.jpg)
 
    ### Para el CLI
-   ![cli](src/img/cli.jpg)
+   [Para el cli](src/img/cli.jpg)
 
 ## 3. Instalación :rocket:
 
@@ -67,4 +66,9 @@ La librería contiene las siguientes dependencias:
       ![resultApiTrue](src/img/resultApiTrue.png)
 
 ## 6. Uso del CLI :package:
- 
+ - [ ] El ejecutable de nuestra aplicación debe poder ejecutarse de la siguiente manera a través de la terminal:
+     - `md-links <path-to-file> [options]`
+
+ - [ ] Options:  
+     - :small_orange_diamond: --help
+       ![helpCLI](src/img/clihelp.png)
