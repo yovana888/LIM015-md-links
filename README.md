@@ -66,8 +66,8 @@ La librería contiene las siguientes dependencias:
       ![resultApiTrue](src/img/resultApiTrue.png)
 
 ## 6. Uso del CLI :package:
- - [ ] El ejecutable de nuestra aplicación debe poder ejecutarse de la siguiente manera a través de la terminal:
-     - `md-links <path-to-file> [options]`
+  El ejecutable de nuestra aplicación debe poder ejecutarse de la siguiente manera a través de la terminal:
+    `md-links <path-to-file> [options]`
 
- - [:white_check_mark:]  Option: --help
+  :white_check_mark:  Option: --help
     ![helpCLI](src/img/clihelp.png)
