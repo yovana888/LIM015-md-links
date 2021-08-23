@@ -2,11 +2,12 @@ const fs = require("fs");
 const path = require("path");
 const fetch = require('node-fetch');
 
-const isDirectory = (pathValid) => fs.statSync(pathValid).isDirectory(); //devuelve true en caso de ser un directorio 
+//devuelve true en caso de ser un directorio 
+const isDirectory = (pathValid) => fs.statSync(pathValid).isDirectory();
 
 const readDirectory = (pathDirectory) => {
     let results = []; //almacena todas las rutas del los archivos md
-    let files = fs.readdirSync(pathDirectory);
+    let files = fs.readdirSync(pathDirectory); //lee directorio
 
     files.forEach((item) => {
         let pathFile = path.join(pathDirectory, item);
@@ -19,8 +20,9 @@ const readDirectory = (pathDirectory) => {
     return results;
 }
 
-const regexCorcheteParentesis = /!*\[(.+?)\]\((.+?)\)/gi; // String que cumpla: [2. Resumen del proyecto](#2-resumen-del-proyecto)
-const regexUrl = /(?:(?:https?|ftp|file):\/\/|www\.|ftp\.)(?:\([-A-Z0-9+&@#\/%=~_|$?!:,.]*\)|[-A-Z0-9+&@#\/%=~_|$?!:,.])*(?:\([-A-Z0-9+&@#\/%=~_|$?!:,.]*\)|[A-Z0-9+&@#\/%=~_|$])/ig;
+// String que cumpla: [2. Resumen del proyecto](#2-resumen-del-proyecto)
+const regexCorcheteParentesis = /!*\[(.+?)\]\((.+?)\)/gi;
+const regexUrl = /\(((?:\/|https?:\/\/).*)\)/gi;
 
 //LEER ARCHIVO;
 const readFile = (pathFile) => {
@@ -35,7 +37,7 @@ const readFile = (pathFile) => {
         if (url != null) {
             allLinksMd.push({
                 file: pathFile,
-                href: url[0],
+                href: url[0].slice(1, -1),
                 text: textUrl.slice(0, 50)
             });
         }
@@ -60,7 +62,7 @@ const validateLinks = (data) => data.map((obj) => {
             message: '-'
         }
     } else {
-        return fetch(obj.href)
+        const respuesta = fetch(obj.href)
             .then((res) => {
                 return {
                     file: obj.file,
@@ -79,6 +81,7 @@ const validateLinks = (data) => data.map((obj) => {
                     message: 'FAIL',
                 }
             });
+        return respuesta
     }
 
 });

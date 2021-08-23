@@ -14,8 +14,6 @@ Project is created with:
 	
 ## Setup
 To run this project: [Run Project](https://www.heroku.com/)
-more Info: [Github](https://github.com/yovana888/)
-package: [npm](https://www.npmjs.c/)
 ```
 $ cd ../lorem
 $ npm install
